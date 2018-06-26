@@ -3,7 +3,14 @@
 
 <% if (payload.length > 0) { %>
     <h1>Here are the available hosts</h1> 
- <% } else { %>
+    <ul>
+        <% payload.forEach(h => { %>
+        <li><a href='/hosts/<%= h.id %>'><%= h.name %></a></li>
+        <% }) %> 
+    </ul>
+
+<% } else { %>
+    <%= status %>
     <h1>CRADLE DESTROYED</h1> 
 <% } %>
 

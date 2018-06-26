@@ -15,13 +15,10 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.static('public'));
 app.use(ejsLayouts);
+app.use(express.urlencoded({ extended: false }));
 
 // ROUTES
 app.use('/hosts', hostRouter);
-
-// app.get('/', (req, res) => {
-//     res.render("home")
-// })
 
 mongoose.connect(process.env.DB_DEV, (err) => {
     console.log(err || "SUCCESSFULLY CONNECTED TO CRADLE")
